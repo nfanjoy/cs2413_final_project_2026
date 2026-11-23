@@ -1,4 +1,5 @@
 #CS2413 Final Project
+
 Using juice shop by OWASP our goal is to demonstrate how the management of files can be
 vulnerable to attack. This experiment uses a technique called zip slip to move outside the
 intended path to access unintended files. A failure to check the file paths for directory moving
