@@ -39,8 +39,11 @@ async function extractZipBuffer (buffer: Buffer) {
       path.isAbsolute(relative);
 
     if(isOutsideDir){
-      console.log("Zip Slip Attack Prevented")
-      continue;
+      const error = Object.assign(
+        new Error('Complaint Zip entry escapes the upload directory'),
+        { status: 400 }
+      );
+      throw error;
     }
        
     challengeUtils.solveIf(challenges.fileWriteChallenge, () => { return givenDestination === path.resolve('ftp/legal.md') })
